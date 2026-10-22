@@ -1,0 +1,6 @@
+{
+  "name": "INET24H.COM - Dịch vụ Thiết kế Ảnh Online",
+  "description": "Nền tảng thương mại dịch vụ thiết kế banner, logo, avatar, poster, thumbnail, menu và ấn phẩm truyền thông trực tuyến chuyên nghiệp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,33 @@
+# ========================================================
+# INET24H.COM - BẢO MẬT VÀ ĐIỀU HƯỚNG HOSTING CPANEL (APACHE / LITESPEED)
+# ========================================================
+
+Options -Indexes
+ServerSignature Off
+
+# 1. Chống thực thi script PHP trong thư mục uploads
+<Directory "uploads">
+    <FilesMatch "\.(php|phtml|php3|php4|php5|php7|phps|cgi|pl|exe)$">
+        Order Deny,Allow
+        Deny from all
+    </FilesMatch>
+</Directory>
+
+# 2. Bảo vệ file cấu hình và database
+<FilesMatch "^(config\.php|inet24h\.sql|\.env|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# 3. Security Headers
+<IfModule mod_headers.c>
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 4. Gzip nén trang tối ưu tốc độ tải ảnh
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
